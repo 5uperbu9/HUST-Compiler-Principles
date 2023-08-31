@@ -1,0 +1,41 @@
+const int N = 10;
+int prices[N]; 
+
+// 请完成函数maxProfit(),其输入为股价数组，输出为可获得的最大利润 
+int maxProfit(int prices[]){
+    // ----------  开始
+    int max=0;
+    int i=0,j;
+    while(i<N-1){
+        j=i+1;
+        while(j<N){
+            if(prices[i]<prices[j]){
+                int tmp=prices[j]-prices[i];
+                if(tmp>max){
+                    max=tmp;
+                }
+            }
+            j=j+1;
+        }
+        i=i+1;
+    }
+    return max;
+    // ----------- 结束
+}
+
+// main()接收连续N个交易日的股价输入并存入数组prices[],
+// 接着调用maxProfit()求可能的最大利润，然后输出该值，并换行。
+int main(){
+    // 股价数组的输入：
+    int i=0;
+    while(i<N){
+        prices[i]=getint();
+        i=i+1;
+    }
+    int best = maxProfit(prices);
+    //结果输出：
+    
+    putint(best);
+    putch(10);
+   return 1;
+}
